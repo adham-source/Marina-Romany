@@ -57,20 +57,28 @@
       </section>
       <!--  end nav bar -->
     <!-- end -->
-    <a href="/create" class="btn btn-primary my-4">Add Post</a>
+    <div class="container">
+      <a href="/create" class="btn btn-primary my-4">Add Post</a>
     
-    <% for (post of posts) { %> 
-        <div class="card">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 class="card-title"><%=post.title  %> </h5>
-                  <p class="card-text"><%=post.content %> </p>
-                  <a href="/edit/<%= post._id %> " class="btn btn-primary">edit</a>
-                  <a href="/delete/<%= post._id %> " class="btn btn-danger">delete</a>
-                </div>
+      <div class="row">
+        <% for (post of posts) { %> 
+          <div class="col-lg-3 col-md-2 my-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%=post.title  %> </h5>
+                <p class="card-text"><%=post.content %> </p>
+                <a href="/edit/<%= post._id %> " class="btn btn-primary">edit</a>
+                <a href="/delete/<%= post._id %> " class="btn btn-danger">delete</a>
               </div>
-
+            </div>
           </div>
+          
+  
+            
         <% } %> 
+      </div>
+    </div>
+    
+    
 </body>
 </html>
