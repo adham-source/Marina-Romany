@@ -13,35 +13,21 @@ router.get('/create' , async(req , res) =>{
     return res.render('create')
 })
 
-// router.post('/create' , async(req , res)=>{
-//     const {title , content} = req.body
-//     let post = new post({title , content})
+router.post('/create' , async(req , res)=>{
+    const {title , content} = req.body
+    let post = new Post({title , content})
 
-// try{
-//     post = await post.save()
-// } catch{
-//      return res.status(400).send(err)
-// }
-//     return res.redirect('/')
-// })
-
-
-router.post('/create', async (req, res) => {
-    const post = new Post({
-        title: req.body.title,
-        content: req.body.author,
-    })
-    try {
-        const newPost = await post.save()
-        res.redirect('/')
-    } catch(err) {
-        console.log(err)
-    }
+try{
+    post = await post.save()
+} catch{
+     return res.status(400).send(err)
+}
+    return res.redirect('/')
 })
 
 
 router.get('/delete/:id' , async(req,res)=>{
-    const{id} = rec.params
+    const id = req.params.id
     const post = await Post.findByIdAndDelete(id)
     if (!post) return res.status(404).send('the post id not found')
 
@@ -51,14 +37,14 @@ router.get('/delete/:id' , async(req,res)=>{
 
 
 router.get('/edit/:id' , async(req , res)=>{
-    const {id} = req.params
+    const id = req.params.id
     const post = await Post.findById(id)
     return res.render('edit' , {post})
 })
 
 
 router.post('/edit/:id' , async(req , res)=>{
-    const {id} = req.params
+    const id = req.params.id
     const{title , content} = req.body
 
     const post = await Post.findByIdAndUpdate(id , {title , content} ,{new : true} )
