@@ -36,10 +36,10 @@ router.get('/delete/:id' , async(req,res)=>{
 })
 
 
-router.get('/edit/:id' , async(req , res)=>{
+router.get('/edit/:id' , async (req , res)=>{
     const id = req.params.id
     const post = await Post.findById(id)
-    return res.render('edit' , {post})
+    return res.render('edit' , { post: post})
 })
 
 

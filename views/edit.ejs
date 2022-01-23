@@ -13,11 +13,11 @@
         <form action="/edit/<%= post._id %> " method="post"> 
             <div class="mb-3">
               <label for="title">Title</label>
-              <input type="text"  id="title" name="title" placeholder="Title" class="form-control" value="<% post.title %> ">
+              <input type="text"  id="title" name="title" placeholder="Title" class="form-control" value="<%= post.title %> ">
          </div>
             <div class="mb-3">
               <label for="description">content</label>
-              <input type="text"  id="content" name="content" placeholder="content" class="form-control" value="<% post.content %>">
+              <input type="text"  id="content" name="content" placeholder="content" class="form-control" value="<%= post.content %>">
          </div>
          <button type="submit" class="btn btn-success">add post</button>
         </form>
